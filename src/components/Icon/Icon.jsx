@@ -3,7 +3,7 @@ import clsx from 'clsx';
 export default function Icon({ name, size = 20, className, ...props }) {
   const defaultAttributes = {
     ...(className && {
-      className: clsx(className),
+      className: clsx(`icon-${name}`, className),
     }),
     ...(size !== 'auto' && { width: size, height: size }),
     role: 'presentation',

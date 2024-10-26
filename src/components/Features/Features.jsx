@@ -8,7 +8,7 @@ export default function Features({ features }) {
       {features.map(feature => (
         <li
           key={feature}
-          className="flex items-center rounded-full py-3 px-[18px] bg-badges"
+          className="flex items-center rounded-full py-3 px-[18px] bg-badges font-medium"
         >
           {<Icon name={getFeatureIconName(feature)} className="mr-2" />}{' '}
           {capitalizeFirstLetter(feature)}
