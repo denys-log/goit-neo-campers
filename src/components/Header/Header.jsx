@@ -14,7 +14,7 @@ const NAV = [
 
 export default function Header() {
   return (
-    <header className="py-7 bg-inputs">
+    <header className="py-[26px] bg-inputs">
       <div className="container relative flex justify-center">
         <NavLink to="/" className="absolute top-1/2 -translate-y-1/2 left-0">
           <img src="./logo.svg" alt="TravelTrucks" />

@@ -2,6 +2,7 @@ import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
 import styles from './Home.module.scss';
 import { useNavigate } from 'react-router-dom';
+import clsx from 'clsx';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className={styles.wrapper}>
+      <div className={clsx(styles.wrapper, 'flex flex-col justify-center')}>
         <div className="container">
           <h1 className="text-white text-h1 mb-4">Campers of your dreams</h1>
           <p className="text-white mb-10 text-h2">
