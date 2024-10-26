@@ -3,7 +3,7 @@ import CatalogSidebarFilters from './components/CatalogSidebarFilters/CatalogSid
 
 export default function CatalogSidebar() {
   return (
-    <div className="w-[360px] mr-16">
+    <div className="basis-[360px] shrink-0 mr-16">
       <CatalogSidebarLocation />
       <CatalogSidebarFilters />
     </div>

@@ -9,12 +9,6 @@ const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
 const CamperDetails = lazy(() => import('./pages/CamperDetails/CamperDetails'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
-{
-  /* <svg className="icon" width="26" height="26">
-  <use xlinkHref="./icons.svg#icon-fridge"></use>
-</svg>; */
-}
-
 function App() {
   return (
     <>

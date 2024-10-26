@@ -1,5 +1,5 @@
 import Button from '../../../../components/Button/Button';
-import Input from '../../../../components/Input/Input';
+import FormInput from '../../../../components/FormInput/FormInput';
 import Datepicker from '../../../../components/Datepicker/Datepicker';
 import Textarea from '../../../../components/Textarea/Textarea';
 import ErrorMessage from '../../../../components/ErrorMessage/ErrorMessage';
@@ -47,7 +47,7 @@ export default function CamperDetailsContactForm() {
             type="text"
             name="name"
             placeholder="Name*"
-            component={Input}
+            component={FormInput}
           />
           <ErrorMessage name="name" />
         </div>
@@ -57,7 +57,7 @@ export default function CamperDetailsContactForm() {
             type="email"
             name="email"
             placeholder="Email*"
-            component={Input}
+            component={FormInput}
           />
           <ErrorMessage name="email" />
         </div>
