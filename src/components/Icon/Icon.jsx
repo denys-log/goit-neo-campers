@@ -13,7 +13,7 @@ export default function Icon({ name, size = 20, className, ...props }) {
     'aria-hidden': true,
   };
 
-  const href = `./icons.svg#icon-${name}`;
+  const href = `/icons.svg#icon-${name}`;
 
   return (
     <svg {...defaultAttributes} focusable="false">

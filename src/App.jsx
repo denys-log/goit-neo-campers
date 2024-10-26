@@ -7,6 +7,9 @@ import Spinner from './components/Spinner/Spinner';
 const Home = lazy(() => import('./pages/Home/Home'));
 const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
 const CamperDetails = lazy(() => import('./pages/CamperDetails/CamperDetails'));
+const FeaturesDetails = lazy(() =>
+  import('./pages/FeaturesDetails/FeaturesDetails')
+);
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 function App() {
@@ -23,7 +26,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/catalog/:id" element={<CamperDetails />}>
-            <Route path="features" element={<>FEATURES</>} />
+            <Route path="features" element={<FeaturesDetails />} />
             <Route path="reviews" element={<>REVIEWS</>} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />

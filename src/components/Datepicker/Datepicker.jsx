@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import './Datepicker.css';
 
 export default function Datepicker({ field, form, ...props }) {
   return (

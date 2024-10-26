@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../../components/Button/Button';
-import Features from '../../../../components/Features/Features';
+import FeaturesList from '../../../../components/FeaturesList/FeaturesList';
 import Rating from '../../../../components/Rating/Rating';
 import Location from '../../../../components/Location/Location';
 import Price from '../../../../components/Price/Price';
@@ -41,7 +41,7 @@ export default function CatalogItem({ item }) {
           <Location location={item.location} />
         </div>
         <p className="truncate w-[525px] text-text mb-6">{item.description}</p>
-        <Features features={featuresList} />
+        <FeaturesList features={featuresList} />
         <Button
           onClick={() => navigate(`/catalog/${item.id}`)}
           className="mt-6"

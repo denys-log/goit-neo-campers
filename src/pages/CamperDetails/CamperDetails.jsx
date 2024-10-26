@@ -5,9 +5,21 @@ import Button from '../../components/Button/Button';
 import Rating from '../../components/Rating/Rating';
 import Price from '../../components/Price/Price';
 import Location from '../../components/Location/Location';
+import Tabs from '../../components/Tabs/Tabs';
 import { useNavigate } from 'react-router-dom';
 import CamperDetailsGallery from './components/CamperDetailsGallery/CamperDetailsGallery';
 import CamperDetailsContactForm from './components/CamperDetailsContactForm/CamperDetailsContactForm';
+
+const TABS = [
+  {
+    name: 'Features',
+    link: 'features',
+  },
+  {
+    name: 'Reviews',
+    link: 'reviews',
+  },
+];
 
 export default function CamperDetails() {
   const navigate = useNavigate();
@@ -16,21 +28,20 @@ export default function CamperDetails() {
     <>
       <Header />
       <div className="container mt-12 pb-20">
-        <h1 className="mb-2">{data.name}</h1>
-        <Rating rating={data.rating} count={data.reviews.length} />
-        <Location location={data.location} />
-        <Price price={data.price} />
+        <h1 className="text-h2 mb-2">{data.name}</h1>
+        <div className="flex item-center mb-4">
+          <Rating
+            rating={data.rating}
+            count={data.reviews.length}
+            className="mr-4"
+          />
+          <Location location={data.location} />
+        </div>
+        <Price price={data.price} className="mb-[28px]" />
         <CamperDetailsGallery photos={data.gallery} />
-        <p>{data.description}</p>
+        <p className="mt-[28px] text-text">{data.description}</p>
 
-        <ul>
-          <li>
-            <Link to="features">Features</Link>
-          </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
-          </li>
-        </ul>
+        <Tabs list={TABS} />
 
         <div className="flex">
           <div className="flex-1">

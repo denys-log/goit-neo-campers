@@ -2,13 +2,15 @@ import { getFeatureIconName } from '../../helpers/getFeatureIconName/getFeatureI
 import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter/capitalizeFirstLetter';
 import Icon from '../Icon/Icon';
 
-export default function Features({ features }) {
+export default function FeaturesList({ features }) {
   return (
     <ul className="flex flex-wrap gap-2">
       {features.map(feature => (
         <li
           key={feature}
-          className="flex items-center rounded-full py-3 px-[18px] bg-badges font-medium"
+          className={
+            'flex items-center rounded-full py-3 px-[18px] font-medium bg-badges'
+          }
         >
           {<Icon name={getFeatureIconName(feature)} className="mr-2" />}{' '}
           {capitalizeFirstLetter(feature)}
