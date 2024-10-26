@@ -20,6 +20,9 @@ export default {
     },
     container: {
       center: true,
+      screens: {
+        '2xl': '1312px',
+      },
     },
   },
   plugins: [],
