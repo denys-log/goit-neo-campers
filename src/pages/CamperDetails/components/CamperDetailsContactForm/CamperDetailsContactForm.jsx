@@ -1,5 +1,6 @@
 import Button from '../../../../components/Button/Button';
 import Input from '../../../../components/Input/Input';
+import Datepicker from '../../../../components/Datepicker/Datepicker';
 import Textarea from '../../../../components/Textarea/Textarea';
 import ErrorMessage from '../../../../components/ErrorMessage/ErrorMessage';
 import { Formik, Form, Field } from 'formik';
@@ -66,7 +67,7 @@ export default function CamperDetailsContactForm() {
             type="date"
             name="date"
             placeholder="Booking date*"
-            component={Input}
+            component={Datepicker}
           />
           <ErrorMessage name="date" />
         </div>
