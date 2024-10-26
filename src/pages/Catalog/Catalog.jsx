@@ -8,7 +8,7 @@ export default function Catalog() {
   return (
     <>
       <Header />
-      <div className="container mt-12">
+      <div className="container mt-12 pb-14">
         <div className="flex">
           <CatalogSidebar />
           <CatalogList items={data.items} />

@@ -4,23 +4,13 @@ import Features from '../../../../components/Features/Features';
 import Rating from '../../../../components/Rating/Rating';
 import Location from '../../../../components/Location/Location';
 import Price from '../../../../components/Price/Price';
-
-const FEATURES = [
-  'AC',
-  'bathroom',
-  'kitchen',
-  'TV',
-  'radio',
-  'refrigerator',
-  'microwave',
-  'gas',
-  'water',
-];
+import LikeButton from '../../../../components/LikeButton/LikeButton';
+import { FEATURES_ICONS } from '../../../../constants/constants';
 
 export default function CatalogItem({ item }) {
   const navigate = useNavigate();
 
-  const features = FEATURES.reduce((acc, feature) => {
+  const featuresList = Object.keys(FEATURES_ICONS).reduce((acc, feature) => {
     if (item[feature]) acc.push(feature);
     return acc;
   }, []);
@@ -28,26 +18,34 @@ export default function CatalogItem({ item }) {
   return (
     <div className="border rounded-[20px] p-6 mb-8 flex items-start">
       <div className="w-[292px] h-[320px] rounded-[10px] overflow-hidden mr-6">
-        <img src={item.gallery[0].thumb} alt={item.name} />
+        <img
+          className="w-full h-full object-cover object-center"
+          src={item.gallery[0].thumb}
+          alt={item.name}
+          width={292}
+          height={320}
+        />
       </div>
       <div className="flex-1">
-        <div className="flex">
-          <h2>{item.name}</h2>
-          {/* <strong>{item.price}</strong> */}
-          <Price price={item.price} />
-          <button>LIKE</button>
+        <div className="flex mb-2">
+          <h2 className="text-h2 mr-auto">{item.name}</h2>
+          <Price price={item.price} className="ml-2 mr-3" />
+          <LikeButton />
         </div>
-        <div>
-          <Rating rating={item.rating} count={item.reviews.length} />
-          {/* <span>
-            {item.rating} ({item.reviews.length} Reviews)
-          </span> */}
-          {/* <span>{item.location}</span> */}
+        <div className="flex mb-6">
+          <Rating
+            rating={item.rating}
+            totalReviews={item.reviews.length}
+            className="mr-4"
+          />
           <Location location={item.location} />
         </div>
-        <p className="truncate w-[800px]">{item.description}</p>
-        <Features features={features} />
-        <Button onClick={() => navigate(`/catalog/${item.id}`)}>
+        <p className="truncate w-[525px] text-text mb-6">{item.description}</p>
+        <Features features={featuresList} />
+        <Button
+          onClick={() => navigate(`/catalog/${item.id}`)}
+          className="mt-6"
+        >
           Show more
         </Button>
       </div>

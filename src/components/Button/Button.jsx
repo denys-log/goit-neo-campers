@@ -15,7 +15,8 @@ export default function Button({
         'rounded-full py-4 px-14 font-medium',
         {
           'bg-button hover:bg-button-hover text-white': variant === 'primary',
-          // 'bg-gray-light': type === 'secondary',
+          'bg-transparent border hover:border-button-hover':
+            variant === 'secondary',
         },
         className
       )}
