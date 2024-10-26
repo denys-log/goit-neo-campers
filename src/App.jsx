@@ -1,23 +1,27 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchContacts } from './redux/contactsOps';
-import ContactForm from './components/ContactForm/ContactForm';
-import SearchBox from './components/SearchBox/SearchBox';
-import ContactList from './components/ContactList/ContactList';
+import { Routes, Route } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { Toaster } from 'react-hot-toast';
+
+const Home = lazy(() => import('./pages/Home/Home'));
+const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
+const CamperDetails = lazy(() => import('./pages/CamperDetails/CamperDetails'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
     <>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      <ContactList />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/catalog/:id" element={<CamperDetails />}>
+            <Route path="features" element={<>FEATURES</>} />
+            <Route path="reviews" element={<>REVIEWS</>} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+      <Toaster position="top-right" />
     </>
   );
 }
