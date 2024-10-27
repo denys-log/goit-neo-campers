@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import Button from '../../../../components/Button/Button';
 import FeaturesList from '../../../../components/FeaturesList/FeaturesList';
 import Rating from '../../../../components/Rating/Rating';
@@ -13,7 +12,6 @@ import {
 
 export default function CatalogItem({ item }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const favorites = useSelector(selectFavorites);
 
   return (
@@ -50,7 +48,6 @@ export default function CatalogItem({ item }) {
         <Button
           onClick={() => {
             window.open(`/catalog/${item.id}`, '_blank', 'noopener,noreferrer');
-            // navigate(`/catalog/${item.id}`)
           }}
           className="mt-6"
         >

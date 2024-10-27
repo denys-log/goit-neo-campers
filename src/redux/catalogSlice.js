@@ -18,14 +18,6 @@ const catalogSlice = createSlice({
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
-    reset: state => {
-      state.data = null;
-      state.currentPage = 1;
-      state.error = null;
-      state.isLoadMoreAvailable = true;
-      state.isLoadingMore = false;
-      state.filters = { location: '', equipments: {}, type: '' };
-    },
     setFilters: (state, action) => {
       if (JSON.stringify(state.filters) !== JSON.stringify(action.payload)) {
         state.currentPage = 1;
