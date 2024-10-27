@@ -53,7 +53,3 @@ Open your web browser and navigate to the provided URL (e.g.,
 
 You have successfully started your existing Vite.js and React.js project. You
 can now begin developing or testing your application.
-
-```
-
-```
