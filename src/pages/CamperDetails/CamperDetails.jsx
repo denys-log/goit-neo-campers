@@ -30,7 +30,7 @@ export default function CamperDetails() {
   return (
     <>
       <Helmet>
-        <title>Camper {data.name}</title>
+        <title>Camper</title>
         <meta
           name="description"
           content="You can find everything you want in our catalog"
