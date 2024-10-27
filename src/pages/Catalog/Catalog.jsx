@@ -9,6 +9,7 @@ import { selectCatalog, selectFilters } from '../../redux/selectors';
 import { catalogActions } from '../../redux/catalogSlice';
 import Button from '../../components/Button/Button';
 import { fetchCatalog } from '../../redux/thunks';
+import { Helmet } from 'react-helmet-async';
 
 const LIMIT = 10;
 
@@ -42,6 +43,13 @@ export default function Catalog() {
 
   return (
     <>
+      <Helmet>
+        <title>Campers catalog</title>
+        <meta
+          name="description"
+          content="You can find everything you want in our catalog"
+        />
+      </Helmet>
       <Header />
       <div className="container mt-12 pb-14">
         <div className="flex">

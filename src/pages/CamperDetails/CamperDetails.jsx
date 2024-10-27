@@ -13,6 +13,7 @@ import { fetchCamper } from '../../redux/thunks';
 import QueryHandler from '../../components/QueryHandler/QueryHandler';
 import CamperDetailsFeatures from './components/CamperDetailsFeatures/CamperDetailsFeatures';
 import CamperDetailsReviews from './components/CamperDetailsReviews/CamperDetailsReviews';
+import { Helmet } from 'react-helmet-async';
 
 const TABS = ['Features', 'Reviews'];
 
@@ -28,6 +29,13 @@ export default function CamperDetails() {
 
   return (
     <>
+      <Helmet>
+        <title>Camper {data.name}</title>
+        <meta
+          name="description"
+          content="You can find everything you want in our catalog"
+        />
+      </Helmet>
       <Header />
       <div className="container mt-12 pb-20">
         <QueryHandler isLoading={isLoading} isError={error}>

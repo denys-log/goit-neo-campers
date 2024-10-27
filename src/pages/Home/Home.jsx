@@ -3,12 +3,20 @@ import Button from '../../components/Button/Button';
 import styles from './Home.module.scss';
 import { useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
+import { Helmet } from 'react-helmet-async';
 
 export default function Home() {
   const navigate = useNavigate();
 
   return (
     <>
+      <Helmet>
+        <title>Campers of your dreams</title>
+        <meta
+          name="description"
+          content="You can find everything you want in our catalog"
+        />
+      </Helmet>
       <Header />
       <div className={clsx(styles.wrapper, 'flex flex-col justify-center')}>
         <div className="container">
