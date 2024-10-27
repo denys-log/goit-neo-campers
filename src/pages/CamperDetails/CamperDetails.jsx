@@ -1,4 +1,4 @@
-import { Outlet, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Rating from '../../components/Rating/Rating';
 import Price from '../../components/Price/Price';
@@ -8,25 +8,19 @@ import CamperDetailsGallery from './components/CamperDetailsGallery/CamperDetail
 import CamperDetailsContactForm from './components/CamperDetailsContactForm/CamperDetailsContactForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCamper } from '../../redux/selectors';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchCamper } from '../../redux/thunks';
 import QueryHandler from '../../components/QueryHandler/QueryHandler';
+import CamperDetailsFeatures from './components/CamperDetailsFeatures/CamperDetailsFeatures';
+import CamperDetailsReviews from './components/CamperDetailsReviews/CamperDetailsReviews';
 
-const TABS = [
-  {
-    name: 'Features',
-    link: 'features',
-  },
-  {
-    name: 'Reviews',
-    link: 'reviews',
-  },
-];
+const TABS = ['Features', 'Reviews'];
 
 export default function CamperDetails() {
   const dispatch = useDispatch();
   const params = useParams();
   const { data, isLoading, error } = useSelector(selectCamper);
+  const [activeTab, setActiveTab] = useState('Features');
 
   useEffect(() => {
     dispatch(fetchCamper({ id: params.id }));
@@ -52,11 +46,15 @@ export default function CamperDetails() {
               <CamperDetailsGallery photos={data.gallery} />
               <p className="mt-[28px] text-text">{data.description}</p>
 
-              <Tabs list={TABS} />
+              <Tabs activeTab={activeTab} list={TABS} onChange={setActiveTab} />
 
               <div className="flex">
                 <div className="flex-1">
-                  <Outlet />
+                  {activeTab === 'Features' ? (
+                    <CamperDetailsFeatures />
+                  ) : (
+                    <CamperDetailsReviews />
+                  )}
                 </div>
                 <div className="w-[641px]">
                   <CamperDetailsContactForm />

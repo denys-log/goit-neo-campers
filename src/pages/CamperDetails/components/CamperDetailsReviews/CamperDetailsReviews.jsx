@@ -1,7 +1,11 @@
 import clsx from 'clsx';
-import Stars from '../../components/Stars/Stars';
+import Stars from '../../../../components/Stars/Stars';
+import { useSelector } from 'react-redux';
+import { selectCamper } from '../../../../redux/selectors';
 
-export default function Reviews() {
+export default function CamperDetailsReviews() {
+  const { data } = useSelector(selectCamper);
+
   if (!data.reviews.length) return 'No reviews yet';
 
   return (
@@ -28,20 +32,3 @@ export default function Reviews() {
     </ul>
   );
 }
-
-const data = {
-  reviews: [
-    {
-      reviewer_name: 'Alice',
-      reviewer_rating: 5,
-      comment:
-        'Exceptional RV! The Road Bear C 23-25 provided a comfortable and enjoyable journey for my family. The amenities were fantastic, and the space was well-utilized. Highly recommended!',
-    },
-    {
-      reviewer_name: 'Bob',
-      reviewer_rating: 4,
-      comment:
-        'Great RV for a road trip. Spacious and well-equipped. Only minor issues with the bathroom setup, but overall a wonderful experience.',
-    },
-  ],
-};
