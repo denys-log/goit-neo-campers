@@ -6,9 +6,16 @@ import Location from '../../../../components/Location/Location';
 import Price from '../../../../components/Price/Price';
 import LikeButton from '../../../../components/LikeButton/LikeButton';
 import { FEATURES_ICONS } from '../../../../constants/constants';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  favoritesActions,
+  selectFavorites,
+} from '../../../../redux/favoritesSlice';
 
 export default function CatalogItem({ item }) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const favorites = useSelector(selectFavorites);
 
   const featuresList = Object.keys(FEATURES_ICONS).reduce((acc, feature) => {
     if (item[feature]) acc.push(feature);
@@ -27,10 +34,14 @@ export default function CatalogItem({ item }) {
         />
       </div>
       <div className="flex-1">
-        <div className="flex mb-2">
+        <div className="flex mb-2 items-start">
           <h2 className="text-h2 mr-auto">{item.name}</h2>
           <Price price={item.price} className="ml-2 mr-3" />
-          <LikeButton />
+          <LikeButton
+            onClick={() => dispatch(favoritesActions.setFavorite(item.id))}
+            isActive={favorites.ids.includes(item.id)}
+            className="relative -bottom-1"
+          />
         </div>
         <div className="flex mb-6">
           <Rating

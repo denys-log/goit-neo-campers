@@ -67,7 +67,7 @@ export default function CatalogFilters() {
       <hr className="my-6" />
       <ul className="flex flex-wrap gap-3">
         {EQUIPMENTS.map(item => (
-          <li key={item.name}>
+          <li key={item.name + item.icon}>
             <FilterButton
               onClick={() => handleChangeFilter('equipments', item.name)}
               icon={item.icon}
@@ -81,7 +81,7 @@ export default function CatalogFilters() {
       <hr className="my-6" />
       <ul className="flex flex-wrap gap-3">
         {TYPES.map(item => (
-          <li key={item.name}>
+          <li key={item.value}>
             <FilterButton
               onClick={() => handleChangeFilter('type', item.value)}
               icon={item.icon}
