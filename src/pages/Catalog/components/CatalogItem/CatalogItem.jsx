@@ -48,7 +48,10 @@ export default function CatalogItem({ item }) {
         <p className="truncate w-[525px] text-text mb-6">{item.description}</p>
         <FeaturesList data={item} />
         <Button
-          onClick={() => navigate(`/catalog/${item.id}`)}
+          onClick={() => {
+            window.open(`/catalog/${item.id}`, '_blank', 'noopener,noreferrer');
+            // navigate(`/catalog/${item.id}`)
+          }}
           className="mt-6"
         >
           Show more
