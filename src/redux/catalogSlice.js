@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCatalog } from './catalogOps';
+import { fetchCatalog } from './thunks';
 
 const initialState = {
   data: null,

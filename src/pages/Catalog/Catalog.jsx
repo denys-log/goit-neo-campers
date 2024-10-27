@@ -5,10 +5,10 @@ import CatalogList from './components/CatalogList/CatalogList';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchCatalog } from '../../redux/catalogOps';
 import { selectCatalog, selectFilters } from '../../redux/selectors';
 import { catalogActions } from '../../redux/catalogSlice';
 import Button from '../../components/Button/Button';
+import { fetchCatalog } from '../../redux/thunks';
 
 const LIMIT = 10;
 
