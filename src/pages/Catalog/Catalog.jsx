@@ -1,12 +1,12 @@
 import Header from '../../components/Header/Header';
 import QueryHandler from '../../components/QueryHandler/QueryHandler';
-import CatalogSidebar from './components/CatalogSidebar/CatalogSidebar';
+import CatalogFilters from './components/CatalogFilters/CatalogFilters';
 import CatalogList from './components/CatalogList/CatalogList';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchCatalog } from '../../redux/catalogOps';
-import { selectCatalog } from '../../redux/selectors';
+import { selectCatalog, selectFilters } from '../../redux/selectors';
 import { catalogActions } from '../../redux/catalogSlice';
 import Button from '../../components/Button/Button';
 
@@ -14,18 +14,27 @@ const LIMIT = 10;
 
 export default function Catalog() {
   const dispatch = useDispatch();
-  const {
-    data,
-    error,
-    isLoading,
-    isLoadingMore,
-    isLoadMoreAvailable,
-    currentPage,
-  } = useSelector(selectCatalog);
+  const { data, isLoading, isLoadingMore, isLoadMoreAvailable, currentPage } =
+    useSelector(selectCatalog);
+  const filters = useSelector(selectFilters);
 
   useEffect(() => {
-    dispatch(fetchCatalog({ page: currentPage, limit: LIMIT }));
-  }, [currentPage, dispatch]);
+    dispatch(
+      fetchCatalog({
+        page: currentPage,
+        limit: LIMIT,
+        location: filters.location,
+        type: filters.type,
+        ...filters.equipments,
+      })
+    );
+  }, [
+    currentPage,
+    dispatch,
+    filters.equipments,
+    filters.location,
+    filters.type,
+  ]);
 
   const handleFetchMore = () => {
     dispatch(catalogActions.setCurrentPage(currentPage + 1));
@@ -36,8 +45,8 @@ export default function Catalog() {
       <Header />
       <div className="container mt-12 pb-14">
         <div className="flex">
-          <QueryHandler isLoading={isLoading} isError={error}>
-            <CatalogSidebar />
+          <CatalogFilters />
+          <QueryHandler isLoading={isLoading}>
             {data?.items.length ? (
               <div className="flex-1">
                 <CatalogList items={data?.items} />

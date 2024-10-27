@@ -9,9 +9,10 @@ export default function FilterButton({ icon, name, isActive, onClick }) {
       className={clsx(
         'flex flex-col items-center justify-center font-medium',
         'w-[112px] h-[96px] rounded-xl',
-        'border hover:border-gray transition-colors duration-200',
+        'border transition-colors duration-200',
         {
           'border-button': isActive,
+          'hover:border-gray': !isActive,
         }
       )}
     >

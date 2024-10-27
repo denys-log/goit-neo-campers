@@ -3,11 +3,12 @@ import { fetchCatalog } from './catalogOps';
 
 const initialState = {
   data: null,
-  isLoading: true,
+  isLoading: false,
   isLoadingMore: false,
   isLoadMoreAvailable: true,
   error: null,
   currentPage: 1,
+  filters: { location: '', equipments: {}, type: '' },
 };
 
 const catalogSlice = createSlice({
@@ -16,6 +17,13 @@ const catalogSlice = createSlice({
   reducers: {
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
+    },
+    setFilters: (state, action) => {
+      if (JSON.stringify(state.filters) !== JSON.stringify(action.payload)) {
+        state.currentPage = 1;
+        state.data = null;
+        state.filters = action.payload;
+      }
     },
   },
   extraReducers: builder => {
