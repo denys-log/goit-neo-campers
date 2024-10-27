@@ -2,9 +2,8 @@ import clsx from 'clsx';
 import Icon from '../Icon/Icon';
 
 export default function Rating({ rating, totalReviews, className }) {
-  // TODO: hover + link
   return (
-    <div className={clsx('flex items-center', className)}>
+    <div className={clsx('flex items-center hover:underline', className)}>
       <Icon
         name="rating"
         size={16}

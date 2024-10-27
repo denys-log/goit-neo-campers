@@ -13,6 +13,7 @@ import { fetchCamper } from '../../redux/thunks';
 import QueryHandler from '../../components/QueryHandler/QueryHandler';
 import CamperDetailsFeatures from './components/CamperDetailsFeatures/CamperDetailsFeatures';
 import CamperDetailsReviews from './components/CamperDetailsReviews/CamperDetailsReviews';
+import { catalogActions } from '../../redux/catalogSlice';
 
 const TABS = ['Features', 'Reviews'];
 
@@ -24,6 +25,7 @@ export default function CamperDetails() {
 
   useEffect(() => {
     dispatch(fetchCamper({ id: params.id }));
+    dispatch(catalogActions.reset());
   }, [dispatch, params.id]);
 
   return (
